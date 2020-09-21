@@ -1,15 +1,14 @@
 package br.edu.uepb.jaxrsexample;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Turma {
 	private long id;
 	private String nome;
 	private String turno;
 	
-	public Turma(long id, String nome, String turno) {
-		this.id = id;
-		this.nome = nome;
-		this.turno = turno;
-	}
+	public Turma() {  }
 
 	@Override
 	public int hashCode() {

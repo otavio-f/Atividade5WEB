@@ -1,16 +1,15 @@
 package br.edu.uepb.jaxrsexample;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Aluno {
 	private long id;
 	private String nome;
 	private String curso;
 	
-	public Aluno(long id, String nome, String curso) {
-		this.id = id;
-		this.nome = nome;
-		this.curso = curso;
-	}
-
+	public Aluno() { }
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

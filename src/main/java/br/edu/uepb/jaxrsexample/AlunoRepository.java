@@ -43,7 +43,7 @@ public class AlunoRepository {
 		alunos.add(a);
 	}
 	
-	public void delete(long id) {
-		alunos.remove(id);
+	public void delete(Aluno a) {
+		alunos.remove(a);
 	}
 }

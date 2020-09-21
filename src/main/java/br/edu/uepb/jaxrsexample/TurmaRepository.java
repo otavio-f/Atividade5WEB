@@ -12,10 +12,10 @@ public class TurmaRepository {
 		return new ArrayList<Turma>(turmas);
 	}
 	
-	public void create(Turma a) {
-		if(a.getId()==0)
-			a.setId(genId(turmas.size()+1));
-		turmas.add(a);
+	public void create(Turma t) {
+		if(t.getId()==0)
+			t.setId(genId(turmas.size()+1));
+		turmas.add(t);
 	}
 	
 	public boolean containsId(long id) {
@@ -38,12 +38,12 @@ public class TurmaRepository {
 		return null;
 	}
 	
-	public void edit(Turma a) {
-		turmas.remove(getById(a.getId()));
-		turmas.add(a);
+	public void edit(Turma t) {
+		turmas.remove(getById(t.getId()));
+		turmas.add(t);
 	}
 	
-	public void delete(long id) {
-		turmas.remove(id);
+	public void delete(Turma t) {
+		turmas.remove(t);
 	}
 }

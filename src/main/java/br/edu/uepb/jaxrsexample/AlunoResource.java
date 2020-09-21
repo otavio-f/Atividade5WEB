@@ -1,6 +1,8 @@
 
 package br.edu.uepb.jaxrsexample;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -9,9 +11,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 // The Java class will be hosted at the URI path "/aluno"
 @Path("/alunos")
@@ -22,7 +24,9 @@ public class AlunoResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAlunos() {
-        return Response.ok(alunoRepository.getAll()).build();
+    	GenericEntity<List<Aluno>> e = new GenericEntity<List<Aluno>>(alunoRepository.getAll()){};
+    	return Response.ok(e).build();
+        //return Response.ok(alunoRepository.getAll()).build();
     }
     
     @POST
@@ -38,6 +42,9 @@ public class AlunoResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAlunoById(@PathParam("id") long id) {
+    	Aluno a = alunoRepository.getById(id);
+    	if(a == null)
+    		return Response.status(Response.Status.NOT_FOUND).build();
     	return Response.ok(alunoRepository.getById(id)).build();
     }
     
@@ -63,13 +70,12 @@ public class AlunoResource {
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteAluno(@PathParam("id") long id, Aluno aluno) {
+    public Response deleteAluno(@PathParam("id") long id) {
     	Aluno a = alunoRepository.getById(id);
     	if(a == null)
     		return Response.status(Response.Status.NOT_FOUND).build();
     	try {
-    		alunoRepository.delete(aluno.getId());
+    		alunoRepository.delete(a);
     		return Response.noContent().build();
     	} catch(Exception e) {
     		return Response
