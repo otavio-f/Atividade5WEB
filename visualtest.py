@@ -1,4 +1,4 @@
-import requests #<--
+import requests #<-- required, install with pip
 import json
 
 url = "http://localhost:8080/api/"
