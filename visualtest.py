@@ -71,7 +71,6 @@ print("\nDeletando uma turma... ", end="")
 response = requests.delete(endpoint)
 assert response.status_code == 200
 # Check if turma count is 1 #
-endpoint = url+"turmas/"
 response = requests.get(url+"turmas/")
 response_data = response.json()
 assert len(response_data) == 1
