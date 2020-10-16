@@ -1,4 +1,4 @@
-package br.edu.uepb.jaxrsexample;
+package br.edu.uepb.springexample;
 
 import java.util.ArrayList;
 import java.util.HashSet;

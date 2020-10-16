@@ -1,15 +1,12 @@
-package br.edu.uepb.jaxrsexample;
+package br.edu.uepb.springexample;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
-public class Turma {
+public class Aluno {
 	private long id;
 	private String nome;
-	private String turno;
+	private String curso;
 	
-	public Turma() {  }
-
+	public Aluno() { }
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -23,10 +20,10 @@ public class Turma {
 		if (this == obj) {
 			return true;
 		}
-		if (!(obj instanceof Turma)) {
+		if (!(obj instanceof Aluno)) {
 			return false;
 		}
-		Turma other = (Turma) obj;
+		Aluno other = (Aluno) obj;
 		if (id != other.id) {
 			return false;
 		}
@@ -62,17 +59,17 @@ public class Turma {
 	}
 
 	/**
-	 * @return the turno
+	 * @return the curso
 	 */
-	public String getTurno() {
-		return turno;
+	public String getCurso() {
+		return curso;
 	}
 
 	/**
-	 * @param turno the turno to set
+	 * @param curso the curso to set
 	 */
-	public void setTurno(String turno) {
-		this.turno = turno;
+	public void setCurso(String curso) {
+		this.curso = curso;
 	}
 	
 	
